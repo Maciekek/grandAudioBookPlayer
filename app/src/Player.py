@@ -1,5 +1,6 @@
 import pygame
 import logging
+import pygame.display
 
 from src.Logger import log
 
@@ -13,6 +14,7 @@ class Player:
         self.mixer = pygame.mixer
         self.bookPartEndEvent = partEndEvent
         pygame.init()
+        pygame.display.init()
         pygame.mixer.init()
 
     def play(self, fileToPlay):
