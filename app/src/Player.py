@@ -33,9 +33,13 @@ class Player:
             pygame.mixer.music.unpause()
             self.isPaused = False
             log("UNPause")
+
+            return self.isPaused
         else:
             pygame.mixer.music.pause()
             self.isPaused = True
             log("Pause")
+
+            return self.isPaused
 
 

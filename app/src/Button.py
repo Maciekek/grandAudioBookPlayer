@@ -31,9 +31,10 @@ def debounce(wait):
 
 
 class Button:
-    def __init__(self, buttonGPIO, callbackButtonPressed):
+    def __init__(self, buttonGPIO, ledGPIO,  callbackButtonPressed):
         self.buttonGPIO = buttonGPIO
         self.callbackButtonPressed = callbackButtonPressed
+        self.ledGPIO = ledGPIO
         GPIO.setmode(GPIO.BCM)
 
         GPIO.setup(buttonGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -46,3 +47,14 @@ class Button:
 
     def onPressed(self):
         log('PRESED BUTTON ' + self.buttonGPIO)
+
+    def toggleLed(self, isTurnedOn):
+        if isTurnedOn:
+            log("Turning led ON")
+            GPIO.setup(self.ledGPIO, GPIO.OUT)
+            GPIO.output(self.ledGPIO, GPIO.HIGH)
+        else:
+            log("Turning led OFF")
+            GPIO.setup(self.ledGPIO, GPIO.OUT)
+            GPIO.output(self.ledGPIO, GPIO.LOW)
+
