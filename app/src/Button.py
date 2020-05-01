@@ -1,26 +1,23 @@
 from src.Logger import log
 import RPi.GPIO as GPIO
 
-from threading import Timer
+import time
 
+def debounce(s):
+    """Decorator ensures function that can only be called once every `s` seconds.
+    """
+    def decorate(f):
+        t = None
 
-def debounce(wait):
-    """ Decorator that will postpone a functions
-        execution until after wait seconds
-        have elapsed since the last time it was invoked. """
-    def decorator(fn):
-        def debounced(*args, **kwargs):
-            def call_it():
-                fn(*args, **kwargs)
-            try:
-                debounced.t.cancel()
-            except(AttributeError):
-                pass
-            debounced.t = Timer(wait, call_it)
-            debounced.t.start()
-        return debounced
-    return decorator
-
+        def wrapped(*args, **kwargs):
+            nonlocal t
+            t_ = time.time()
+            if t is None or t_ - t >= s:
+                result = f(*args, **kwargs)
+                t = time.time()
+                return result
+        return wrapped
+    return decorate
 
 class Button:
     def __init__(self, buttonGPIO):
