@@ -37,10 +37,10 @@ def loadNextPart():
 
 while True:
 
-    input_state = GPIO.input(18)
-    if input_state == False:
-        print('Button Pressed')
-        time.sleep(0.2)
+    # input_state = GPIO.input(18)
+    # if input_state == False:
+    #     print('Button Pressed')
+    #     time.sleep(0.2)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
