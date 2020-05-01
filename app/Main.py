@@ -30,7 +30,7 @@ def buttonPressed():
     button.toggleLed(isPaused)
 
 
-button = Button(18, buttonPressed)
+button = Button(18, 24, buttonPressed)
 
 
 def loadNextPart():
