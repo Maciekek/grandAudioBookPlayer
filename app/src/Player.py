@@ -13,8 +13,8 @@ class Player:
     def __init__(self, partEndEvent):
         self.mixer = pygame.mixer
         self.bookPartEndEvent = partEndEvent
-        pygame.init()
         pygame.display.init()
+        pygame.init()
         pygame.mixer.init()
 
     def play(self, fileToPlay):
