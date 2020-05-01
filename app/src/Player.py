@@ -1,6 +1,7 @@
 import pygame
 import logging
 import pygame.display
+import os
 
 from src.Logger import log
 
@@ -13,6 +14,8 @@ class Player:
     def __init__(self, partEndEvent):
         self.mixer = pygame.mixer
         self.bookPartEndEvent = partEndEvent
+        os.environ["SDL_VIDEODRIVER"] = "dummy"
+
         pygame.display.init()
         pygame.init()
         pygame.mixer.init()
