@@ -1,22 +1,19 @@
 import pygame
+import time
 from src.Player import Player
 from src.Logger import loggerInit, log, error
 from src.FilesManager import getAllFileNames
+from src.Button import Button
 
-import RPi.GPIO as GPIO
-import time
 
-GPIO.setmode(GPIO.BCM)
-
-GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-GPIO.setup(24, GPIO.OUT)
-GPIO.output(24, GPIO.LOW)
+#
+# GPIO.setup(24, GPIO.OUT)
+# GPIO.output(24, GPIO.LOW)
 
 BOOK_PART_END = pygame.USEREVENT + 1
 
 loggerInit()
-
+button = Button(18)
 log("--- APP STARTED ---")
 player = Player(BOOK_PART_END)
 
