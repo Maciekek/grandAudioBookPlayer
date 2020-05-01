@@ -32,7 +32,7 @@ def buttonPressed():
 
 
 button = Button(18, 24, buttonPressed)
-button.toggleLed(True)
+button.toggleLed(False)
 
 def loadNextPart():
     global currentPlaying
