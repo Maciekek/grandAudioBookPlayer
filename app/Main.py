@@ -13,7 +13,6 @@ from src.Button import Button
 BOOK_PART_END = pygame.USEREVENT + 1
 
 loggerInit()
-button = Button(18)
 log("--- APP STARTED ---")
 player = Player(BOOK_PART_END)
 
@@ -25,6 +24,13 @@ if len(allParts) == 0:
 
 
 player.play(allParts[0])
+
+
+def buttonPressed():
+    log('Button pressed received from Main')
+
+
+button = Button(18, buttonPressed)
 
 
 def loadNextPart():

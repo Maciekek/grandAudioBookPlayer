@@ -31,15 +31,18 @@ def debounce(wait):
 
 
 class Button:
-    def __init__(self, buttonGPIO):
+    def __init__(self, buttonGPIO, callbackButtonPressed):
         self.buttonGPIO = buttonGPIO
+        self.callbackButtonPressed = callbackButtonPressed
         GPIO.setmode(GPIO.BCM)
+
         GPIO.setup(buttonGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(buttonGPIO, GPIO.RISING, callback=self.button_callback)  # Setup event on pin 10 rising edge
 
     @debounce(2)
     def button_callback(self, channel):
         log('presed presedpresedpresedpresedpresedpresedpresed')
+        self.callbackButtonPressed()
 
     def onPressed(self):
         log('PRESED BUTTON ' + self.buttonGPIO)
