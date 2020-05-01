@@ -24,6 +24,7 @@ if len(allParts) == 0:
 player.play(allParts[0])
 
 
+
 def buttonPressed():
     log('Button pressed received from Main')
     isPaused = player.pause()
@@ -31,7 +32,7 @@ def buttonPressed():
 
 
 button = Button(18, 24, buttonPressed)
-
+button.toggleLed(True)
 
 def loadNextPart():
     global currentPlaying
