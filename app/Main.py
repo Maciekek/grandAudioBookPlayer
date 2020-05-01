@@ -28,6 +28,7 @@ player.play(allParts[0])
 
 def buttonPressed():
     log('Button pressed received from Main')
+    player.pause()
 
 
 button = Button(18, buttonPressed)
