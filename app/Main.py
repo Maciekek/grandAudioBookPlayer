@@ -28,7 +28,7 @@ player.play(allParts[0])
 def buttonPressed():
     log('Button pressed received from Main')
     isPaused = player.pause()
-    button.toggleLed(isPaused)
+    button.toggleLed(not isPaused)
 
 
 button = Button(18, 24, buttonPressed)
