@@ -3,6 +3,16 @@ from src.Player import Player
 from src.Logger import loggerInit, log, error
 from src.FilesManager import getAllFileNames
 
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+GPIO.setup(24, GPIO.OUT)
+GPIO.output(24, GPIO.LOW)
+
 BOOK_PART_END = pygame.USEREVENT + 1
 
 loggerInit()
@@ -29,6 +39,12 @@ def loadNextPart():
 
 
 while True:
+
+    input_state = GPIO.input(18)
+    if input_state == False:
+        print('Button Pressed')
+        time.sleep(0.2)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

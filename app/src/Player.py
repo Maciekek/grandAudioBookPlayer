@@ -19,6 +19,7 @@ class Player:
         pygame.display.init()
         pygame.init()
         pygame.mixer.init()
+	pygame.mixer.music.set_volume(1)
 
     def play(self, fileToPlay):
         pygame.mixer.music.set_endevent(self.bookPartEndEvent)
