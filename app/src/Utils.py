@@ -1,3 +1,5 @@
+from threading import Timer
+
 def debounce(wait):
     def decorator(fun):
         def debounced(*args, **kwargs):
