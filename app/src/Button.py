@@ -31,5 +31,7 @@ class Button:
     def makeSignal(self, numberOfBlinks):
         for x in range(0, numberOfBlinks):
             GPIO.output(self.ledGPIO, GPIO.HIGH)
-            time.sleep(2)
+            time.sleep(1)
             GPIO.output(self.ledGPIO, GPIO.LOW)
+            time.sleep(1)
+
