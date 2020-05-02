@@ -23,7 +23,7 @@ def buttonPressed():
     log('Button pressed received from Main')
     if isInitiallyMode:
         isInitiallyMode = False
-        player.play(0)
+        player.play(currentPartPlaying[0])
         button.toggleLed(True)
         return
 
