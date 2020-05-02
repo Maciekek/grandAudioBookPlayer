@@ -1,45 +1,45 @@
 import pygame
-import time
 from src.Player import Player
 from src.Logger import loggerInit, log, error
 from src.FilesManager import getAllFileNames
 from src.Button import Button
 
-#
-# GPIO.setup(24, GPIO.OUT)
-# GPIO.output(24, GPIO.LOW)
-
 BOOK_PART_END = pygame.USEREVENT + 1
 
 loggerInit()
-log("--- APP STARTED ---")
 player = Player(BOOK_PART_END)
+log("--- APP STARTED ---")
 
 allParts = getAllFileNames()
-currentPlaying = 0
+currentPartPlaying = 0
+isInitiallyMode = True
 
 if len(allParts) == 0:
     error("There is no book to play!")
 
-player.play(allParts[0])
-
-
 
 def buttonPressed():
+    global isInitiallyMode
     log('Button pressed received from Main')
+    if isInitiallyMode:
+        isInitiallyMode = False
+        player.play(0)
+        button.toggleLed(True)
+        return
+
     isPaused = player.pause()
     button.toggleLed(not isPaused)
 
 
 button = Button(18, 24, buttonPressed)
-button.toggleLed(True)
+
 
 def loadNextPart():
-    global currentPlaying
-    print(currentPlaying)
-    log('End of part: ' + str(currentPlaying))
-    currentPlaying += 1
-    player.play(allParts[currentPlaying])
+    global currentPartPlaying
+    print(currentPartPlaying)
+    log('End of part: ' + str(currentPartPlaying))
+    currentPartPlaying += 1
+    player.play(allParts[currentPartPlaying])
 
 
 while True:
