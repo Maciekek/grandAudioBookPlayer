@@ -5,6 +5,8 @@ import os
 
 from src.Logger import log
 
+THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+
 
 class Player:
     mixer = pygame.mixer
@@ -23,7 +25,7 @@ class Player:
 
     def play(self, fileToPlay):
         pygame.mixer.music.set_endevent(self.bookPartEndEvent)
-        pygame.mixer.music.load("book/" + fileToPlay)
+        pygame.mixer.music.load(THIS_FOLDER + "/../book/" + fileToPlay)
         pygame.mixer.music.play()
 
         log("Playing next part: " + fileToPlay)
