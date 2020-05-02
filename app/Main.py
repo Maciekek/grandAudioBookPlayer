@@ -32,7 +32,7 @@ def buttonPressed():
 
 
 button = Button(18, 24, buttonPressed)
-
+button.makeSignal(3)
 
 def loadNextPart():
     global currentPartPlaying
