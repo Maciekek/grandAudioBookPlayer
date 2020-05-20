@@ -45,11 +45,19 @@ def rewButtonPressed():
         player.play(allParts[currentPartPlaying])
 
 
+def forButtonPressed():
+    global currentPartPlaying
+
+    player.pause()
+    currentPartPlaying += 1
+    player.play(allParts[currentPartPlaying])
+
 
 button = Button(18, 24, buttonPressed)
 button.makeSignal(3)
 
 rewButton = Button(23, 20, rewButtonPressed)
+forButton = Button(25, 20, forButtonPressed)
 
 def loadNextPart():
     global currentPartPlaying
