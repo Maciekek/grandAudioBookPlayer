@@ -39,10 +39,12 @@ def rewButtonPressed():
     if player.getPosition() > 60:
         log("Cofam do poczatku modulu")
         player.play(allParts[currentPartPlaying])
+        button.toggleLed(True)
     else:
         log("Laduje poprzedni modul")
         currentPartPlaying -= 1
         player.play(allParts[currentPartPlaying])
+        button.toggleLed(True)
 
 
 def forButtonPressed():
@@ -51,13 +53,14 @@ def forButtonPressed():
     player.pause()
     currentPartPlaying += 1
     player.play(allParts[currentPartPlaying])
+    button.toggleLed(True)
 
 
 button = Button(18, 24, buttonPressed)
 button.makeSignal(3)
 
-rewButton = Button(23, 20, rewButtonPressed)
-forButton = Button(25, 20, forButtonPressed)
+rewButton = Button(23, 24, rewButtonPressed)
+forButton = Button(25, 24, forButtonPressed)
 
 def loadNextPart():
     global currentPartPlaying
