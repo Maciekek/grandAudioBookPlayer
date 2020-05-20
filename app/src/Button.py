@@ -17,7 +17,7 @@ class Button:
 
     @debounce(0.5)
     def button_callback(self, channel):
-        log('Play/Pause button pressed')
+        log('Some button pressed')
         self.callbackButtonPressed()
 
     def toggleLed(self, isTurnedOn):
