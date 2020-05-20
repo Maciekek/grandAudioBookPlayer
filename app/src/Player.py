@@ -2,7 +2,6 @@ import pygame
 import logging
 import pygame.display
 import os
-from mutagen.mp3 import MP3
 
 from src.Logger import log
 
@@ -50,13 +49,6 @@ class Player:
 
         log("Get position " + str(position) + "sec")
         return round(position)
-
-    def getLength(self, musicFilePart):
-        song = MP3(THIS_FOLDER + "/../book/" + musicFilePart)
-        songLength = round(song.info.length)
-
-        log("File part length " + str(songLength) + "sec")
-        return songLength
 
     def setPosition(self, pos):
         pygame.mixer.music.set_pos(pos)
