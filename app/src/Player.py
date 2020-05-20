@@ -2,6 +2,7 @@ import pygame
 import logging
 import pygame.display
 import os
+from mutagen.mp3 import MP3
 
 from src.Logger import log
 
@@ -27,7 +28,7 @@ class Player:
         pygame.mixer.music.set_endevent(self.bookPartEndEvent)
         pygame.mixer.music.load(THIS_FOLDER + "/../book/" + fileToPlay)
         pygame.mixer.music.play()
-
+        self.isPaused = False
         log("Playing next part: " + fileToPlay)
 
     def pause(self):
@@ -44,8 +45,18 @@ class Player:
 
             return self.isPaused
 
-    def checkPosition(self):
-        log(pygame.mixer.music.get_pos())
+    def getPosition(self):
+        position = round(pygame.mixer.music.get_pos() / 1000)
+
+        log("Get position " + str(position) + "sec")
+        return round(position)
+
+    def getLength(self, musicFilePart):
+        song = MP3(THIS_FOLDER + "/../book/" + musicFilePart)
+        songLength = round(song.info.length)
+
+        log("File part length " + str(songLength) + "sec")
+        return songLength
 
     def setPosition(self, pos):
         pygame.mixer.music.set_pos(pos)

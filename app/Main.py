@@ -32,11 +32,19 @@ def buttonPressed():
     button.toggleLed(not isPaused)
 
 def rewButtonPressed():
-    log('Rew button pressed')
-    player.checkPosition()
+    global currentPartPlaying
+
     player.pause()
-    player.setPosition(5)
-    player.pause()
+
+    if player.getPosition() > 2:
+        log("Cofam do poczatku modulu")
+        player.play(allParts[currentPartPlaying])
+    else:
+        log("Laduje poprzedni modul")
+        currentPartPlaying -= 1
+        player.play(allParts[currentPartPlaying])
+
+
 
 button = Button(18, 24, buttonPressed)
 button.makeSignal(3)
