@@ -11,6 +11,7 @@ player = Player(BOOK_PART_END)
 log("--- APP STARTED ---")
 
 allParts = getAllFileNames()
+log('Loaded parts' + ', '.join(allParts))
 currentPartPlaying = 0
 isInitiallyMode = True
 
