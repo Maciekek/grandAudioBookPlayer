@@ -36,7 +36,7 @@ def rewButtonPressed():
 
     player.pause()
 
-    if player.getPosition() > 2:
+    if player.getPosition() > 60:
         log("Cofam do poczatku modulu")
         player.play(allParts[currentPartPlaying])
     else:
