@@ -35,7 +35,7 @@ def rewButtonPressed():
     log('Rew button pressed')
     player.checkPosition()
     player.pause()
-    player.setPosition(player.checkPosition() - 5000)
+    player.setPosition(5)
     player.pause()
 
 button = Button(18, 24, buttonPressed)
