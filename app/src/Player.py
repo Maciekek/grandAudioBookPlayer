@@ -1,4 +1,4 @@
-import pygame
+import pygame, mutagen.mp3
 import logging
 import pygame.display
 import os
@@ -25,6 +25,9 @@ class Player:
 
     def play(self, fileToPlay):
         pygame.mixer.music.set_endevent(self.bookPartEndEvent)
+        mp3 = mutagen.mp3.MP3(THIS_FOLDER + "/../book/" + fileToPlay)
+        pygame.mixer.init(frequency=mp3.info.sample_rate)
+
         pygame.mixer.music.load(THIS_FOLDER + "/../book/" + fileToPlay)
         pygame.mixer.music.play()
         self.isPaused = False
