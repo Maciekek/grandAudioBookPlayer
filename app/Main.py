@@ -30,9 +30,15 @@ def buttonPressed():
     isPaused = player.pause()
     button.toggleLed(not isPaused)
 
+def rewButtonPressed():
+    log('Rew button pressed')
+    player.checkPosition()
+
 
 button = Button(18, 24, buttonPressed)
 button.makeSignal(3)
+
+rewButton = Button(23, 20, rewButtonPressed)
 
 def loadNextPart():
     global currentPartPlaying
@@ -43,6 +49,7 @@ def loadNextPart():
 
 
 while True:
+    # player.checkPosition()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

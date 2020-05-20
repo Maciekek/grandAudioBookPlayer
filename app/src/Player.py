@@ -44,4 +44,15 @@ class Player:
 
             return self.isPaused
 
+    def checkPosition(self):
+        log(pygame.mixer.music.get_pos())
+
+    def setPosition(self, pos):
+        pygame.mixer.music.set_pos(pos)
+
+    def rewind(self):
+        pygame.mixer.music.rewind()
+        log('rewind?')
+
+
 

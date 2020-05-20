@@ -17,6 +17,10 @@ Small program for Raspberry pi to play audio books for my grandmother.
 ```bash 
     alsamixer 
 ``` 
+or 
+```bash
+    amixer sset PCM 100%
+```
 
 
 
