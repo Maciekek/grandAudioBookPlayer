@@ -23,5 +23,34 @@ or
 ```
 
 
+### Run script on startup
 
-### WIP
+Edit `/etc/rc.local`
+
+
+```bash
+    sudo nano /etc/rc.local
+```
+
+Input 
+```bash
+/home/pi/grandAudioBookPlayer/app/run.sh &
+```
+
+
+### Merge mp3 files into one:
+```bash
+cat *.mp3 > all.mp3
+```
+
+
+### Split mp3 file into parts with audacity
+
+You will need `Regular Interval Labels` plugin to audacity
+
+Access to it by `Tools > Regular Interval Labels`
+
+`Edit > Labeled audio > split`
+
+Then `File > Export > Multiple`
+
